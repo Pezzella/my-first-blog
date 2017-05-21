@@ -1,9 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
 <html>
+<style>
+body {
+	background-image: url(gaggia.jpg);
+}
+</style>
     <head>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/cssbootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <title>Alessandro's Gaggia online Portal</title>
     </head>
     <body>
-        <p>The Gaggia goes Viral</p>
-        <p>Time to brew!</p>
+        <div>
+            <h1><a href="/">Gaggia Live Updates</a></h1>
+        </div>
+
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
